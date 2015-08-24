@@ -1,0 +1,32 @@
+{
+    "name": "Pin image downloader",
+    "description": "Download images with just one click!",
+    "version": "0.1",
+    "permissions": [
+        "tabs",
+        "downloads",
+        // "background",
+        "https://www.pinterest.com/*"
+    ],
+
+    "content_scripts": [{
+        "matches": [
+            "https://www.pinterest.com/",
+            "https://www.pinterest.com/search/*"
+        ],
+        "js": ["pins.js"],
+        "run_at": "document_end"
+    }, {
+        "matches": [
+            "https://www.pinterest.com/pin/*"
+        ],
+        "js": ["pin_detail.js"],
+        "run_at": "document_end"
+    }],
+
+
+    "background": {
+        "scripts": ["downloader.js"]
+    },
+    "manifest_version": 2
+}
